@@ -90,9 +90,9 @@ class Vigenere:
   def decrypt(self, ciphertext):
     ret = ''
     it = 0
-    location = ''
+    plaintext_convert = ''
     for i in ciphertext:
-        location = self.chart[self.e[self.key[it]]].index(ciphertext[it])
-        ret += self.d[location]
+        plaintext_convert = self.chart[self.e[self.key[it]]].index(ciphertext[it])
+        ret += self.d[plaintext_convert]
         it += 1
     return ret

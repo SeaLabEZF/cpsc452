@@ -57,22 +57,27 @@ class Railfence:
 class Vigenere:
 
   def createChart(self, key, plaintext):
-    if len(key) != len(plaintext):
-        print("ciphertext unable to be created. Key insufficient length.")
-        return False
-    else:
-        self.key = key
-        self.e = dict(zip(string.ascii_lowercase, range(0,26)))
-        self.d = {v: k for k, v in my_map.items()}
-        self.chart = []
-        for index in range(0,26):
-            self.chart.append([])
-            for it in range(0,26):
-                letter = chr(ord('a') + it + index)
-                if ord(letter) > ord('z'):
-                    letter = chr(ord('a') + (ord(letter) - ord('z')))
-                self.chart[index].append(letter)
-        return True
+      if len(key) < len(plaintext):
+          key_len_it = len(key) + 1
+          key_it = 0
+          while key_len_it <= len(plaintext):
+              key += (key[key_it])
+              key_len_it += 1
+              key_it += 1
+      elif len(key) > len(plaintext):
+          diff_len = len(key) - len(plaintext)
+          key = key[:-diff_len]
+      self.key = key
+      self.e = dict(zip(string.ascii_lowercase, range(0,26)))
+      self.d = {v: k for k, v in self.e.items()}
+      self.chart = []
+      for index in range(0,26):
+          self.chart.append([])
+          for it in range(0,26):
+              letter = chr(ord('a') + it + index)
+              if ord(letter) > ord('z'):
+                  letter = chr(ord('a') + (ord(letter) - ord('z')))
+              self.chart[index].append(letter)
 
   def encrypt(self, plaintext):
     ret = ''

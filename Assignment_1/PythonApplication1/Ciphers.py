@@ -1,15 +1,13 @@
 import string
+import itertools
+
 
 class Caesar:
   
   def setKey(self,key):
     self.key = key % 26
-    
     self.e = dict(zip(string.ascii_lowercase, string.ascii_lowercase[self.key:] + string.ascii_lowercase[:self.key]))
-    self.e.update(dict(zip(string.ascii_uppercase, string.ascii_uppercase[self.key:] + string.ascii_uppercase[:self.key])))
-    
     self.d = dict(zip(string.ascii_lowercase[self.key:] + string.ascii_lowercase[:self.key], string.ascii_lowercase))
-    self.d.update(dict(zip(string.ascii_uppercase[self.key:] + string.ascii_uppercase[:self.key], string.ascii_uppercase)))
   
   def encrypt(self, plaintext):
     return ''.join([self.e[letter] if letter in self.e else letter for letter in plaintext])
@@ -61,38 +59,19 @@ class Vigenere:
       self.e = dict(zip(string.ascii_lowercase, range(0,26)))
       self.d = {v: k for k, v in self.e.items()}
       self.chart = []
-      for index in range(0,26):
+      for chart_index in range(0,26):
           self.chart.append([])
-          for it in range(0,26):
-              letter = chr(ord('a') + it + index)
-              if ord(letter) > ord('z'):
-                  letter = chr(ord('a') + (ord(letter) - ord('z')))
-              self.chart[index].append(letter)
+          for letter in string.ascii_lowercase[chart_index:] + string.ascii_lowercase[:chart_index]:
+            self.chart[chart_index].append(letter)
+
+  def textToKeyCompare(self, text):
+      while len(self.key) < len(text):
+          self.key += self.key
+      if len(self.key) > len(text):
+          self.key = self.key[:len(text)-len(self.key)]
 
   def encrypt(self, plaintext):
-    ret = ''
-    plaintext_it = 0
-    key_it = 0
-    for i in plaintext:
-        ret += self.chart[self.e[self.key[key_it]]][self.e[plaintext[plaintext_it]]]
-        plaintext_it += 1
-        if key_it < len(self.key) - 1:
-            key_it += 1
-        else:
-            key_it = 0
-    return ret
+    return ''.join(self.chart[self.e[key_it]][self.e[plaintext_it]] for plaintext_it, key_it in zip(plaintext, self.key))
   
   def decrypt(self, ciphertext):
-    ret = ''
-    ciphertext_it = 0
-    key_it = 0
-    plaintext_convert = ''
-    for i in ciphertext:
-        plaintext_convert = self.chart[self.e[self.key[key_it]]].index(ciphertext[ciphertext_it])
-        ret += self.d[plaintext_convert]
-        ciphertext_it += 1
-        if key_it < len(self.key) - 1:
-            key_it += 1
-        else:
-            key_it = 0
-    return ret
+    return ''.join(self.d[self.chart[self.e[key_it]].index(ciphertext_it)] for ciphertext_it, key_it in zip(ciphertext, self.key))

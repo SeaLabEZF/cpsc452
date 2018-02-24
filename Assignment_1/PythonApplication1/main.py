@@ -8,9 +8,10 @@ decrypted = ''
 testCase = Ciphers.Vigenere()
 
 testCase.setKey(key)
+testCase.textToKeyCompare(plaintext)
 ciphertext = testCase.encrypt(plaintext)
 decrypted = testCase.decrypt(ciphertext)
 
-print("plaintext = ",plaintext)
-print("ciphertext = ",ciphertext)
-print("decrypted = ",decrypted)
+print(plaintext)
+print(ciphertext)
+print(decrypted)

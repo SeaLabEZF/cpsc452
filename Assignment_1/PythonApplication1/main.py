@@ -1,11 +1,16 @@
 import Ciphers
 
-plaintext = "testcase"
-key = "asdfasdfasdfasdfasdfasdfasdfasdf"
+plaintext = "welaunchatdawndonttellanyone"
+key = "discovered"
 ciphertext = ''
 decrypted = ''
 
 testCase = Ciphers.Vigenere()
 
-testCase.createChart(key, plaintext)
-print(testCase.key)
+testCase.setKey(key)
+ciphertext = testCase.encrypt(plaintext)
+decrypted = testCase.decrypt(ciphertext)
+
+print("plaintext = ",plaintext)
+print("ciphertext = ",ciphertext)
+print("decrypted = ",decrypted)

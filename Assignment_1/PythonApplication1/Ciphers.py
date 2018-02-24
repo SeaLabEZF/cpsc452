@@ -2,7 +2,7 @@ import string
 
 class Caesar:
   
-  def setKey(self,key=3):
+  def setKey(self,key):
     self.key = key % 26
     
     self.e = dict(zip(string.ascii_lowercase, string.ascii_lowercase[self.key:] + string.ascii_lowercase[:self.key]))
@@ -56,17 +56,7 @@ class Railfence:
     
 class Vigenere:
 
-  def createChart(self, key, plaintext):
-      if len(key) < len(plaintext):
-          key_len_it = len(key) + 1
-          key_it = 0
-          while key_len_it <= len(plaintext):
-              key += (key[key_it])
-              key_len_it += 1
-              key_it += 1
-      elif len(key) > len(plaintext):
-          diff_len = len(key) - len(plaintext)
-          key = key[:-diff_len]
+  def setKey(self, key):
       self.key = key
       self.e = dict(zip(string.ascii_lowercase, range(0,26)))
       self.d = {v: k for k, v in self.e.items()}
@@ -81,18 +71,28 @@ class Vigenere:
 
   def encrypt(self, plaintext):
     ret = ''
-    it = 0
+    plaintext_it = 0
+    key_it = 0
     for i in plaintext:
-        ret += self.chart[self.e[self.key[it]]][self.e[plaintext[it]]]
-        it += 1
+        ret += self.chart[self.e[self.key[key_it]]][self.e[plaintext[plaintext_it]]]
+        plaintext_it += 1
+        if key_it < len(self.key) - 1:
+            key_it += 1
+        else:
+            key_it = 0
     return ret
   
   def decrypt(self, ciphertext):
     ret = ''
-    it = 0
+    ciphertext_it = 0
+    key_it = 0
     plaintext_convert = ''
     for i in ciphertext:
-        plaintext_convert = self.chart[self.e[self.key[it]]].index(ciphertext[it])
+        plaintext_convert = self.chart[self.e[self.key[key_it]]].index(ciphertext[ciphertext_it])
         ret += self.d[plaintext_convert]
-        it += 1
+        ciphertext_it += 1
+        if key_it < len(self.key) - 1:
+            key_it += 1
+        else:
+            key_it = 0
     return ret

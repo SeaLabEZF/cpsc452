@@ -144,7 +144,7 @@ class Row_Transposition:
 class Railfence:
 
   def setKey(self, key):
-    return False
+    return True
   
   def encrypt(self, plaintext):
     return ""

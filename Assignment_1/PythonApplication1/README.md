@@ -7,4 +7,6 @@ Tran, Kenny
 Wulwick, Sean
 
 Email:
-sean.wulwick@gmail.com
+seanhillenbrand@csu.fullerton.edu
+hikennytran@csu.fullerton.edu
+sean.wulwick@csu.fullerton.edu

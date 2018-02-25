@@ -1,17 +1,17 @@
 import Ciphers
 
-plaintext = "welaunchatdawndonttellanyone"
-key = "discovered"
+plaintext = "transpositionciphers"
+key = "2135467"
 ciphertext = ''
 decrypted = ''
 
-testCase = Ciphers.Vigenere()
+testCase = Ciphers.Row_Transposition()
 
 testCase.setKey(key)
-testCase.textToKeyCompare(plaintext)
 ciphertext = testCase.encrypt(plaintext)
 decrypted = testCase.decrypt(ciphertext)
-
 print(plaintext)
 print(ciphertext)
 print(decrypted)
+
+

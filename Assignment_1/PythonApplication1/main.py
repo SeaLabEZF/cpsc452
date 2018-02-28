@@ -1,19 +1,23 @@
 import sys
-import Ciphers
+import Caesar
+import RailFence
+import Row_Transposition
+import Playfair
+import Vigenere
 
 if len(sys.argv) < 6:
     print("You are missing arguments, check your input.")
 else:
     if str(sys.argv[1]) == 'PLF':
-        cipher = Ciphers.Playfair
+        cipher = Playfair.Playfair
     elif str(sys.argv[1]) == 'RTS':
-        cipher = Ciphers.Row_Transposition
+        cipher = Row_Transposition.Row_Transposition
     elif str(sys.argv[1]) == 'RFC':
-        cipher = Ciphers.Railfence
+        cipher = RailFence.Railfence
     elif str(sys.argv[1]) == 'VIG':
-        cipher = Ciphers.Vigenere
+        cipher = Vigenere.Vigenere
     elif str(sys.argv[1]) == 'CES':
-        cipher = Ciphers.Caesar     
+        cipher = Caesar.Caesar     
     else:
         print("Unrecognized cipher type, check your spelling and try again.")
         exit()

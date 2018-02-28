@@ -22,8 +22,20 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Caesar.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="main.py" />
-    <Compile Include="Ciphers.py">
+    <Compile Include="Playfair.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="RailFence.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Row_Transposition.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Vigenere.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

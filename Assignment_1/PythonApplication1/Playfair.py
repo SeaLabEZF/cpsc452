@@ -26,7 +26,7 @@ class Playfair:
   def encrypt(self, plaintext):
         formattedPlainText = ""
         prev = ""
-        for ch in plaintext:
+        for ch in plaintext[:-1]:
             if ch is prev: formattedPlainText += "x"
             formattedPlainText += ch
             prev = ch
@@ -35,7 +35,7 @@ class Playfair:
 
         ciphertext = ""
         i = 0
-        while (i < len(formattedPlainText)):
+        while (i < len(formattedPlainText)-1):
             pos1row, pos1col = self.getGridPosition(formattedPlainText[i])
             i += 1
             pos2row, pos2col = self.getGridPosition(formattedPlainText[i])
@@ -51,12 +51,12 @@ class Playfair:
                 ciphertext += self.key[pos1row][pos2col];
                 ciphertext += self.key[pos2row][pos1col];
 
-        return ciphertext
+        return ciphertext + '\n'
   
   def decrypt(self, ciphertext):
         plaintext = ""
         i = 0
-        while (i < len(ciphertext)):
+        while (i < len(ciphertext) - 1):
             pos1row, pos1col = self.getGridPosition(ciphertext[i])
             i += 1
             pos2row, pos2col = self.getGridPosition(ciphertext[i])
@@ -72,7 +72,7 @@ class Playfair:
                 plaintext += self.key[pos1row][pos2col];
                 plaintext += self.key[pos2row][pos1col];
 
-        return plaintext
+        return plaintext + '\n'
 
   def getGridPosition(self, charToFind):
         for i in range(5):

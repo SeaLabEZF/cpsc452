@@ -10,7 +10,7 @@ class Railfence:
   def encrypt(self, plaintext):
         cipherArr = ["" for i in range(self.key)]
         count = 0
-        for char in plaintext:
+        for char in plaintext[:-1]:
             cipherArr[count % self.key] += char
             count += 1
 
@@ -18,12 +18,12 @@ class Railfence:
             for i in range(self.key - 1, int(len(plaintext) % self.key) - 1, -1):
                 cipherArr[i] += " "
 
-        return "".join(cipherArr)
+        return "".join(cipherArr) + '\n'
   
   def decrypt(self, ciphertext):
         cipherArr = ["" for i in range(self.key)]
         plaintext = ""
-        
+        ciphertext = ciphertext[:-1]
         offset = int(len(ciphertext) / self.key)
         for i in range(self.key):
             cipherArr[i] = ciphertext[(i * offset):(i * offset) + offset]

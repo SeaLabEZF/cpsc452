@@ -24,6 +24,7 @@ else:
     if cipher_type.setKey(sys.argv[2]):
         inFile = open(str(sys.argv[4]),"r")
         inputText = inFile.read()
+	
 	if str(sys.argv[1]) == 'VIG':
 	    cipher_type.textToKeyCompare(inputText)
         if str(sys.argv[3]) == 'ENC':
@@ -35,8 +36,12 @@ else:
             exit()
         outFile = open(str(sys.argv[5]), "w")
         outFile.write(outputText)
-        inFile.close()
+        
+	inFile.close()
         outFile.close()
-        print("Encryption Complete. Stored in ", str(sys.argv[5]))  
+	if str(sys.argv[3]) == 'ENC':
+            print("Encryption Complete. Stored in ", str(sys.argv[5]))
+	else:
+            print("Decryption Complete. Stored in ", str(sys.argv[5]))
     else:
         print("Key is incorrect check to ensure your key matches with the cipher type")         

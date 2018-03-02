@@ -10,6 +10,7 @@ class Row_Transposition:
   def encrypt(self, plaintext):
       encode = []
       row_number = len(plaintext) % len(str(self.key))
+      plaintext = plaintext[:-1]
       while row_number != 0:
           plaintext += 'x'
           row_number = len(plaintext) % len(str(self.key))
@@ -23,7 +24,7 @@ class Row_Transposition:
       for key_it in str(self.key):
           for col_it in range(row_number):
               ciphertext += encode[col_it][int(key_it)-1]
-      return ciphertext
+      return ciphertext + '\n'
 
   def decrypt(self, ciphertext):
       decode = []
@@ -36,4 +37,4 @@ class Row_Transposition:
           for ciphertext_it, i in zip(ciphertext, range(row_number)):
               decode[i][int(key_it)-1] = ciphertext_it
           ciphertext = ciphertext[row_number:]
-      return ''.join(''.join(letter for letter in sub) for sub in decode)
+      return ''.join(''.join(letter for letter in sub) for sub in decode) + '\n'

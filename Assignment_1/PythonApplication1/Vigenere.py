@@ -21,7 +21,7 @@ class Vigenere:
           self.key = self.key[:len(text)-len(self.key)]
 
   def encrypt(self, plaintext):
-    return ''.join(self.chart[self.e[key_it]][self.e[plaintext_it]] for plaintext_it, key_it in zip(plaintext, self.key))
+    return ''.join(self.chart[self.e[key_it]][self.e[plaintext_it]] for plaintext_it, key_it in zip(plaintext, self.key)[:-1])+'\n'
   
   def decrypt(self, ciphertext):
-    return ''.join(self.d[self.chart[self.e[key_it]].index(ciphertext_it)] for ciphertext_it, key_it in zip(ciphertext, self.key))
+    return ''.join(self.d[self.chart[self.e[key_it]].index(ciphertext_it)] for ciphertext_it, key_it in zip(ciphertext, self.key)[:-1])+'\n'

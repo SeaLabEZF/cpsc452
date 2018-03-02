@@ -9,25 +9,25 @@ if len(sys.argv) < 6:
     print("You are missing arguments, check your input.")
 else:
     if str(sys.argv[1]) == 'PLF':
-        cipher = Playfair.Playfair
+        cipher_type = Playfair.Playfair()
     elif str(sys.argv[1]) == 'RTS':
-        cipher = Row_Transposition.Row_Transposition
+        cipher_type = Row_Transposition.Row_Transposition()
     elif str(sys.argv[1]) == 'RFC':
-        cipher = RailFence.Railfence
+        cipher_type = RailFence.Railfence()
     elif str(sys.argv[1]) == 'VIG':
-        cipher = Vigenere.Vigenere
+        cipher_type = Vigenere.Vigenere()
     elif str(sys.argv[1]) == 'CES':
-        cipher = Caesar.Caesar     
+        cipher_type = Caesar.Caesar()     
     else:
         print("Unrecognized cipher type, check your spelling and try again.")
         exit()
-    if cipher.setKey(str(sys.argv[2])):
+    if cipher_type.setKey(sys.argv[2]):
         inFile = open(str(sys.argv[4]),"r")
         inputText = inFile.read()
         if str(sys.argv[3]) == 'ENC':
-            outputText = cipher.encrypt(inputText)
+            outputText = cipher_type.encrypt(inputText)
         elif str(sys.argv[3] == 'DEC'):
-            outputText = cipher.decrypt(inputText)
+            outputText = cipher_type.decrypt(inputText)
         else:
             print("Unrecognized coding type, did you want Encode or Decode?")
             exit()

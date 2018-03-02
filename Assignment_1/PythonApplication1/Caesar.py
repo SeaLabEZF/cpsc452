@@ -4,7 +4,7 @@ class Caesar:
   def setKey(self,key):
     if key.isalpha():
         return False
-    self.key = key % 26
+    self.key = int(key) % 26
     self.e = dict(zip(string.ascii_lowercase, string.ascii_lowercase[self.key:] + string.ascii_lowercase[:self.key]))
     self.d = dict(zip(string.ascii_lowercase[self.key:] + string.ascii_lowercase[:self.key], string.ascii_lowercase))
     return True

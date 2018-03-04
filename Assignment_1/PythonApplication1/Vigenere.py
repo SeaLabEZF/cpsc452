@@ -37,4 +37,5 @@ class Vigenere:
       return ''.join(self.chart[self.e[key_it]][self.e[plaintext_it]] for plaintext_it, key_it in zip(plaintext, self.key)[:-1])+'\n'
   #Decrypt Function
   def decrypt(self, ciphertext):
+      self.textToKeyCompare(ciphertext)
       return ''.join(self.d[self.chart[self.e[key_it]].index(ciphertext_it)] for ciphertext_it, key_it in zip(ciphertext, self.key)[:-1])+'\n'

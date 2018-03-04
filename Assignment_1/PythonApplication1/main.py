@@ -37,8 +37,6 @@ else:
     if cipher_type.setKey(sys.argv[2]):
         inFile = open(str(sys.argv[4]),"r")
         inputText = inFile.read()
-        #if str(sys.argv[1]) == 'VIG':
-            #cipher_type.textToKeyCompare(inputText)
         if str(sys.argv[3]) == 'ENC':
             outputText = cipher_type.encrypt(inputText)
         elif str(sys.argv[3] == 'DEC'):

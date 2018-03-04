@@ -1,12 +1,24 @@
+"""
+Hillenbrand, Sean
+Moynihan, Chase
+Tran, Kenny
+Wulwick, Sean
+
+CPSC 452
+Project 1
+"""
+
+#Row Transportation Cipher
+
 import string
 class Row_Transposition:
-
+  #Set Key Function
   def setKey(self, key):
       if key.isalpha():
           return False
       self.key = key
       return True
-  
+  #Encrypt Function
   def encrypt(self, plaintext):
       encode = []
       row_number = len(plaintext) % len(str(self.key))
@@ -25,7 +37,7 @@ class Row_Transposition:
           for col_it in range(row_number):
               ciphertext += encode[col_it][int(key_it)-1]
       return ciphertext + '\n'
-
+  #Decrypt Function
   def decrypt(self, ciphertext):
       decode = []
       row_number = int(len(ciphertext) / len(str(self.key)))

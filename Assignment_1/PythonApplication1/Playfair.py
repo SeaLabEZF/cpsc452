@@ -1,6 +1,18 @@
+"""
+Hillenbrand, Sean
+Moynihan, Chase
+Tran, Kenny
+Wulwick, Sean
+
+CPSC 452
+Project 1
+"""
+
+#Playfair Cipher
+
 import string
 class Playfair:
-  
+  #Set Key Function
   def setKey(self, key):
       if not key.isalpha():
           return False
@@ -22,7 +34,7 @@ class Playfair:
           if ((i + 1) % 5 is 0): 
               row += 1
       return True
-
+  #Encrypt Function
   def encrypt(self, plaintext):
         formattedPlainText = ""
         prev = ""
@@ -52,7 +64,7 @@ class Playfair:
                 ciphertext += self.key[pos2row][pos1col];
 
         return ciphertext + '\n'
-  
+  #Decrypt Function
   def decrypt(self, ciphertext):
         plaintext = ""
         i = 0
@@ -73,7 +85,7 @@ class Playfair:
                 plaintext += self.key[pos2row][pos1col];
 
         return plaintext + '\n'
-
+  #Grid Position Function
   def getGridPosition(self, charToFind):
         for i in range(5):
             for j in range(5):

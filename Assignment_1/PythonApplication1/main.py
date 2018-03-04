@@ -1,3 +1,4 @@
+
 """
 Hillenbrand, Sean
 Moynihan, Chase
@@ -9,14 +10,13 @@ Project 1
 """
 
 #Main program
-
 import sys
 import Caesar
 import RailFence
 import Row_Transposition
 import Playfair
 import Vigenere
-#testasdfasdfasdfasdfasdfadsfasdf
+
 #Checking user input 
 if len(sys.argv) < 6:
     print("You are missing arguments, check your input.")

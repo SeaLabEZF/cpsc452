@@ -17,7 +17,7 @@ class Caesar:
     if key.isalpha():
         return False
     self.key = int(key) % 26
-	#creating dictionaries to store data to be encrypted and decrypted 
+    #creating dictionaries to store data to be encrypted and decrypted 
     self.e = dict(zip(string.ascii_lowercase, string.ascii_lowercase[self.key:] + string.ascii_lowercase[:self.key]))
     self.d = dict(zip(string.ascii_lowercase[self.key:] + string.ascii_lowercase[:self.key], string.ascii_lowercase))
     return True

@@ -93,7 +93,7 @@ class Playfair:
         else:
             plaintext += self.key[pos1row][pos2col];
             plaintext += self.key[pos2row][pos1col];
-        return plaintext + '\n'
+    return plaintext + '\n'
   #Grid Position Function
   def getGridPosition(self, charToFind):
     #search playfair matrix to find positon of charToFind

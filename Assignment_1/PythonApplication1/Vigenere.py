@@ -37,11 +37,11 @@ class Vigenere:
         self.key = self.key[:len(text)-len(self.key)]
   #Encrypt Function
   def encrypt(self, plaintext):
-    textToKeyCompare(plaintext)
+    self.textToKeyCompare(plaintext)
     #returning cipher text based off of key and plaintext in vigenere square
     return ''.join(self.chart[self.e[key_it]][self.e[plaintext_it]] for plaintext_it, key_it in zip(plaintext, self.key)[:-1])+'\n'
   #Decrypt Function
   def decrypt(self, ciphertext):
-    textToKeyCompare(plaintext)
+    self.textToKeyCompare(ciphertext)
     #returning plaintext based off of key and cipher text in vigenere square 
     return ''.join(self.d[self.chart[self.e[key_it]].index(ciphertext_it)] for ciphertext_it, key_it in zip(ciphertext, self.key)[:-1])+'\n'

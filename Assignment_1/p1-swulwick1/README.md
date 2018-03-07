@@ -24,3 +24,5 @@ if no '\n' was present, to fix this we did a check and this can append
 blanks to the cipher text that are seen upon printing, however when
 decrypted the blanks will not be seen but will still exist at the end
 of the string.
+
+We assumed only lowercase input for the key and files.
